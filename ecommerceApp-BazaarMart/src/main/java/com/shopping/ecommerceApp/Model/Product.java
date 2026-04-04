@@ -3,6 +3,7 @@ package com.shopping.ecommerceApp.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,11 +31,23 @@ public class Product {
 
     private int color;
 
-    @ElementCollection
+    @ElementCollection // create separate table for images
     private List<String> images = new ArrayList<>();
 
     private int numRatings;
 
     @ManyToOne
     private Category category;
+
+    @ManyToOne
+    private Seller seller;
+
+    private LocalDateTime createdAt;
+
+    private String Sizes;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews= new ArrayList<>();
+
+
 }
