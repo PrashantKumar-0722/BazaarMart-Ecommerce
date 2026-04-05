@@ -10,28 +10,29 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class CartItem {
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
     @JsonIgnore
-    private Cart cart;
+    @ManyToOne
+    private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
     private Product product;
 
     private String size;
 
-    private int quantity=1; // default 1 item
+    private int quantity;
 
     private Integer mrpPrice;
 
-    private  Integer sellingPrice;
+    private Integer sellingPrice;
 
-    private Long userid;
+    private Long userId;
+
+
 
 }
