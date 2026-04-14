@@ -3,28 +3,22 @@ package com.shopping.ecommerceApp.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Transaction {
+public class Deal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    private User customer;
+    private Integer discount;
 
     @OneToOne
-    private Order order;
+    private HomeCategory category;
 
-    @ManyToOne
-    private Seller seller;
 
-    private LocalDateTime date= LocalDateTime.now();
 }
